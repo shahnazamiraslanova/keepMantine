@@ -9,6 +9,7 @@ const colors = twConfig.theme?.colors as Record<
   string,
   { [x: number]: string }
 >;
+// console.log(colors);
 
 export const theme = createTheme({
   colors: {
