@@ -3,6 +3,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "tailwind-config";
 
 import { Config } from "tailwindcss";
+// console.log(tailwindConfig);
 
 const twConfig = resolveConfig(tailwindConfig) as Config;
 const colors = twConfig.theme?.colors as Record<string, { [x: number]: string }>;
