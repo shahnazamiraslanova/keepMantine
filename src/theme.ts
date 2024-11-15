@@ -1,22 +1,19 @@
-import { MantineBreakpointsValues, createTheme, MantineColorsTuple } from "@mantine/core";
+import { MantineBreakpointsValues, createTheme } from "@mantine/core";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "tailwind-config";
-
 import { Config } from "tailwindcss";
-// console.log(tailwindConfig);
+// import values from "lodash/values";
 
 const twConfig = resolveConfig(tailwindConfig) as Config;
-const colors = twConfig.theme?.colors as Record<string, { [x: number]: string }>;
-
-// Ensure Tailwind colors map correctly to Mantine's 10-shade requirement
-const blueShades = Object.values(colors?.blue || {}).slice(0, 10);
-
-// Check if we have exactly 10 shades; otherwise, fill in with placeholders
-const blue = (blueShades.length === 10 ? blueShades : [...blueShades, ...Array(10 - blueShades.length).fill("#000")]) as unknown as MantineColorsTuple;
+const colors = twConfig.theme?.colors as Record<
+  string,
+  { [x: number]: string }
+>;
 
 export const theme = createTheme({
   colors: {
-    blue, // Tailwind blue shades mapped to Mantine's required 10-shade tuple
+    //TODO: must be as MantineColorsTuple from @mantine/core
+    blue: Object.values(colors?.blue) as any,
   },
   breakpoints: twConfig.theme?.screens as MantineBreakpointsValues,
 });
