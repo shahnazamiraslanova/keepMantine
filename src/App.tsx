@@ -1,14 +1,17 @@
-// App.tsx
-import { Button } from '@mantine/core';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppRoutes from './app/routes/Routes'; // Adjust the import path if needed
 
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Button variant="filled" color="blue">
-        Button with Mantine default blue
-      </Button>
-    </div>
+    <Router>
+      <div>
+      {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
+        <main>
+          <AppRoutes /> 
+        </main>
+      </div>
+    </Router>
   );
 }
 
